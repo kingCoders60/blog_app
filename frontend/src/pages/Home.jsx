@@ -6,6 +6,7 @@ import { FeatureSection1 } from '../components/FeatureSection1'
 import { FeatureSection2 } from '../components/FeatureSection2'
 import { BentoGridLayout } from '../components/BentoGrid'
 import { Searchbar } from '../components/Searchbar'
+import Footer from '../components/Footer'
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
         <BentoGridLayout />
         <FeatureSection2 />
         <Searchbar />
+        <Footer />
     </div>
   )
 }
