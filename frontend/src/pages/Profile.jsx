@@ -1,8 +1,11 @@
 import React from 'react'
+import { ReadWrite } from '../components/ReadWrite'
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div>
+      <ReadWrite />
+    </div>
   )
 }
 
