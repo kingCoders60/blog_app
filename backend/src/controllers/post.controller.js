@@ -4,9 +4,7 @@ export const createPost = async(req,res)=>{
     try {
         const post = new Post(req.body);
         await post.save();
-        res.status(201).json({
-          message: "Post saved succesfully..",
-        });
+        res.status(201).json(post);
     } catch (error) {
         console.log("Error in createPost in post.controller. -> "+error);
         res.status(500).json({

@@ -5,7 +5,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import mongoose from "mongoose";
 
-
+import postRoutes from "./src/routes/post.route.js"
+import commentRoutes from "./src/routes/comment.route.js";
 dotenv.config();
 const connectDB = async()=>{
     try {   
@@ -20,6 +21,9 @@ const connectDB = async()=>{
 connectDB();
 
 const app = express();
+app.use(express.json());
+app.use('/api/posts',postRoutes);
+app.use('/api/comments',commentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{

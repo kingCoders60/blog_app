@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
+import User from '../models/user.model.js'; 
 
 const postSchema = new mongoose.Schema({
     title:{
-        type:string,
+        type:String,
         required:true
     },
     content:{
-        type:string,
+        type:String,
         required:true
     },
     author:{
@@ -17,10 +18,14 @@ const postSchema = new mongoose.Schema({
         type:String
     },
     createdAt:{
-        type:Date.now,
+        type:Date,
+        default:Date.now()
     },
     updatedAt:{
         type:Date,
         default: Date.now
     }
 },{timestamps:true});
+
+
+export default mongoose.model("Post",postSchema);
