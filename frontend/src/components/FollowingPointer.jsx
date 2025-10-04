@@ -1,4 +1,4 @@
-import { FollowerPointerCard } from "../ui/following-pointer";
+import { FollowerPointerCard } from "./ui/following-pointer";
 
 export function FollowingPointer() {
   return (

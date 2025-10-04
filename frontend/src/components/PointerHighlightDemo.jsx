@@ -1,6 +1,6 @@
-import { PointerHighlight } from "../ui/pointer-highlight";
+import { PointerHighlight } from "./ui/pointer-highlight";
 
-export function PointerHighlight() {
+export function PointerHighlightDemo() {
   return (
     <div
       className="mx-auto max-w-lg py-20 text-2xl font-bold tracking-tight md:text-4xl">There has to be some

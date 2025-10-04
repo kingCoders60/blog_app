@@ -11,20 +11,21 @@ import {
   MobileNavMenu,
 } from "./ui/resizable-navbar";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function NavbarDemo() {
   const navItems = [
     {
-      name: "Features",
-      link: "#features",
+      name: "Home",
+      link: "/",
     },
     {
-      name: "Pricing",
-      link: "#pricing",
+      name: "Posts",
+      link: "/posts",
     },
     {
-      name: "Contact",
-      link: "#contact",
+      name: "Profile",
+      link: "/profile",
     },
   ];
 
@@ -38,8 +39,8 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+            <NavbarButton variant="secondary">Reader</NavbarButton>
+            <NavbarButton variant="primary">Writer</NavbarButton>
           </div>
         </NavBody>
 
@@ -54,26 +55,26 @@ export function NavbarDemo() {
 
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
             {navItems.map((item, idx) => (
-              <a
+              <Link
                 key={`mobile-link-${idx}`}
-                href={item.link}
+                to={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="relative text-neutral-600 dark:text-neutral-300">
                 <span className="block">{item.name}</span>
-              </a>
+              </Link>
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+                variant="secondary"
                 className="w-full">
-                Login
+                Reader
               </NavbarButton>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full">
-                Book a call
+                Writer
               </NavbarButton>
             </div>
           </MobileNavMenu>
@@ -180,3 +181,5 @@ const DummyContent = () => {
     </div>
   );
 };
+
+export default NavbarDemo;

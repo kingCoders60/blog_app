@@ -1,5 +1,5 @@
 import React from 'react'
-import { PointerHighlight } from '../components/PointerHighlight'
+import { PointerHighlightDemo } from '../components/PointerHighlightDemo'
 import { PointerCard } from '../components/PointerCard'
 import { FollowingPointer } from '../components/FollowingPointer'
 import { Searchbar } from '../components/Searchbar'
@@ -8,7 +8,7 @@ function Posts() {
   return (
     <div>
       <Searchbar />
-      <PointerHighlight />
+      <PointerHighlightDemo />
       <PointerCard />
       <FollowingPointer />
     </div>
