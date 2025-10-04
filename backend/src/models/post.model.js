@@ -1,31 +1,32 @@
 import mongoose from "mongoose";
-import User from '../models/user.model.js'; 
 
-const postSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-    content:{
-        type:String,
-        required:true
+    content: {
+      type: String,
+      required: true,
     },
-    author:{
-        type:mongoose.Schema.Types.ObjectId,ref:'User',
-        required:true
+    author: {
+      type: String, // Clerk user ID (not ObjectId)
+      required: true,
     },
-    tag:{
-        type:String
+    tag: {
+      type: String,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now()
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
-    updatedAt:{
-        type:Date,
-        default: Date.now
-    }
-},{timestamps:true});
+    updatedAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { timestamps: true }
+);
 
-
-export default mongoose.model("Post",postSchema);
+export default mongoose.model("Post", postSchema);

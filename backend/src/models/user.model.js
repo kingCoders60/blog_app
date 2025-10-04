@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name:String,
-    email:"String",
+  clerkId: { type: String, unique: true, required: true },
+  name: String,
+  email: String,
+  imageUrl: String,
+  region: String,
+  badges: [String]
 })
 
 export default mongoose.model("User",userSchema);

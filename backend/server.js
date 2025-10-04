@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 
 import postRoutes from "./src/routes/post.route.js"
 import commentRoutes from "./src/routes/comment.route.js";
+import userRoutes from "./src/routes/user.route.js"
 dotenv.config();
 const connectDB = async()=>{
     try {   
@@ -22,6 +23,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use('/api/users',userRoutes);
 app.use('/api/posts',postRoutes);
 app.use('/api/comments',commentRoutes);
 

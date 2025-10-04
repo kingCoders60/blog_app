@@ -1,16 +1,22 @@
 import Post from "../models/post.model.js"
 
-export const createPost = async(req,res)=>{
-    try {
-        const post = new Post(req.body);
-        await post.save();
-        res.status(201).json(post);
-    } catch (error) {
-        console.log("Error in createPost in post.controller. -> "+error);
-        res.status(500).json({
-            message:"Some error has occured while saving post."
-        })
-    }
+export const createPost = async (req, res) => {
+  try {
+    const clerkUserId = req.auth.userId;
+
+    const post = new Post({
+      ...req.body,
+      author: clerkUserId,
+    });
+
+    await post.save();
+    res.status(201).json(post);
+  } catch (error) {
+    console.log("Error in createPost in post.controller →", error.message);
+    res.status(500).json({
+      message: "Some error occurred while saving post.",
+    });
+  }
 };
 
 export const getAllPosts = async(req,res)=>{
