@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { DarkModeProvider } from './contexts/DarkModeContext'
-import Navbar2 from './components/Navbar2'
+import NavbarDemo from './components/Navbar2'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Posts from './pages/posts'
@@ -12,7 +12,7 @@ function App() {
     <DarkModeProvider>
       <Router>
         <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-          <Navbar2 />
+          <NavbarDemo />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
