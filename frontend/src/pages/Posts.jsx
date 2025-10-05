@@ -4,6 +4,12 @@ import { PointerCard } from "../components/PointerCard";
 import { FollowingPointer } from "../components/FollowingPointer";
 import { Searchbar } from "../components/Searchbar";
 import  WritePost  from "../components/WritePost.jsx";
+import React from 'react'
+import { PointerHighlightDemo } from '../components/PointerHighlightDemo'
+import { PointerCard } from '../components/PointerCard'
+import { FollowingPointer } from '../components/FollowingPointer'
+import { Searchbar } from '../components/Searchbar'
+import { useDarkMode } from '../contexts/DarkModeContext'
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -29,8 +35,10 @@ function Posts() {
     }
   };
 
+  const { isDarkMode } = useDarkMode();
   return (
     <div className="posts-page">
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
       <Searchbar />
       <WritePost onSubmit={handlePostSubmit} />
 
