@@ -19,6 +19,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/clerk-react";
+import DarkModeToggle from "./DarkModeToggle";
 
 export function NavbarDemo() {
   const navItems = [
@@ -37,6 +38,7 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
+            <DarkModeToggle />
             <SignedOut>
               <SignInButton mode="modal" redirectUrl="/create-post">
                 <NavbarButton variant="secondary">Sign In</NavbarButton>
@@ -74,6 +76,9 @@ export function NavbarDemo() {
               </Link>
             ))}
             <div className="flex w-full flex-col gap-4 pt-4">
+              <div className="flex justify-center pb-2">
+                <DarkModeToggle />
+              </div>
               <SignedOut>
                 <SignInButton mode="modal">
                   <NavbarButton
