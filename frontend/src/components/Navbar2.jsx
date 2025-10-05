@@ -38,10 +38,10 @@ export function NavbarDemo() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <SignedOut>
-              <SignInButton mode="modal">
+              <SignInButton mode="modal" redirectUrl="/create-post">
                 <NavbarButton variant="secondary">Sign In</NavbarButton>
               </SignInButton>
-              <SignUpButton mode="modal">
+              <SignUpButton mode="modal" redirectUrl="/create-post">
                 <NavbarButton variant="primary">Sign Up</NavbarButton>
               </SignUpButton>
             </SignedOut>
