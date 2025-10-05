@@ -11,13 +11,15 @@ function App() {
   return (
     <DarkModeProvider>
       <Router>
-        <Navbar2 />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/create-post" element={<CreatePost />} />
-        </Routes>
+        <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500">
+          <Navbar2 />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/create-post" element={<CreatePost />} />
+          </Routes>
+        </div>
       </Router>
     </DarkModeProvider>
   );
