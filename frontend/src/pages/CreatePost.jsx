@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
-  const { getToken } = useAuth();
+  const { getToken } = useAuth(); // 👈 get Clerk token
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -23,18 +23,22 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = await getToken();
+      const token = await getToken(); // or getToken({ template: "backend" })
+      console.log("Frontend token:", token); // 👈 Confirm it's not undefined
+
       await axios.post("http://localhost:5001/api/posts", formData, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // 👈 Send token to backend
         },
       });
-      navigate("/posts"); // redirect after success
+
+      navigate("/posts");
     } catch (error) {
       console.error("Error creating post:", error);
       alert("Failed to create post");
     }
   };
+
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 border rounded shadow">
