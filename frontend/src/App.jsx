@@ -11,7 +11,7 @@ function App() {
   return (
     <DarkModeProvider>
       <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500">
           <NavbarDemo />
           <Routes>
             <Route path="/" element={<Home />} />
