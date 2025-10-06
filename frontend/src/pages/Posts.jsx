@@ -7,8 +7,6 @@ function Posts() {
   const [posts, setPosts] = useState([]);
   const [expandedPostId, setExpandedPostId] = useState(null);
   const { getToken } = useAuth();
-
-  // ... (useEffect and handlePostSubmit remain unchanged)
   useEffect(() => {
     fetch("http://localhost:5001/api/posts")
       .then((res) => res.json())
@@ -72,10 +70,8 @@ function Posts() {
                   border border-blue-200 dark:border-blue-700 shadow-lg  dark:shadow-blue-900/50 
                   relative transition-all duration-300 cursor-pointer 
                   hover:shadow-xl hover:shadow-blue-200/80 
-                  
-                  // 👇 ADDED CLASSES TO PREVENT WHITE FLASH
-                  focus:outline-none focus:ring-2 focus:ring-blue-300 // Custom focus ring (blue)
-                  active:bg-blue-50/90 dark:active:bg-gray-700/90   // Slight blue/gray shift on click/tap
+                  focus:outline-none focus:ring-2 focus:ring-blue-300 
+                  active:bg-blue-50/90 dark:active:bg-gray-700/90   
                 ">
                 <div className="flex items-start justify-between mb-2">
                   <h2 className="text-xl font-extrabold text-blue-600 dark:text-blue-300 flex-1 pr-4">
