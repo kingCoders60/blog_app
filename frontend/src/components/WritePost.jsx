@@ -33,7 +33,7 @@ function WritePost({ onSubmit }) {
         </div>
 
         {/* Writing Area */}
-        <div className="flex-grow flex flex-col space-y-6">
+        <div className="flex-grow flex flex-col space-y-2">
           {/* Title Input */}
           <div>
             <label htmlFor="post-title" className="sr-only">
