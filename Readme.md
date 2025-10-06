@@ -1,5 +1,11 @@
 MERN Stack Blog App
 ---
+Run Both ..each in diffrent terminal to see in Actions!
+
+Running Frontend: npm run dev
+
+Running Backend: npm run dev
+
 
 https://docs.google.com/document/d/13cDbENSxKmd2TAd2vwDIMy-Vy42TQV4wGGkwWpOVGiY/edit?tab=t.0
 A Full Stack Blog App with Ai Features..
