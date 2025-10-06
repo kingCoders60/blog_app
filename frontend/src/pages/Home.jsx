@@ -10,7 +10,7 @@ import Footer from '../components/Footer'
 import Faq1 from '../components/faq-1'
 import WaitlistPage from '../components/waitlist'
 import { useDarkMode } from '../contexts/DarkModeContext'
-import ChatWidget from "../components/ChatWidget.jsx"
+// import ChatWidget from "../components/ChatWidget.jsx"
 function Home() {
   const { isDarkMode } = useDarkMode();
   return (
@@ -22,7 +22,7 @@ function Home() {
         <BentoGridLayout />
         <FeatureSection2 />
         <Searchbar />
-        <ChatWidget/>
+        {/* <ChatWidget/> */}
         <WaitlistPage />
         <Faq1 />
         <Footer />

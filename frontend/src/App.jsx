@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Posts from "./pages/Posts"; 
 import CreatePost from "./pages/CreatePost";
+import ChatWidget from "./components/ChatWidget.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/posts" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
           </Routes>
+          <ChatWidget />
         </div>
       </Router>
     </DarkModeProvider>
