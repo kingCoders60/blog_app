@@ -16,12 +16,10 @@ function WritePost({ onSubmit }) {
   };
 
   return (
-    // Main container for the full-page layout
     <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <form
         onSubmit={handleSubmit}
-        // Inner container to manage content width and padding
-        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full flex flex-col">
+        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full flex flex-col border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm">
         {/* Header Section */}
         <div className="flex justify-between items-center mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
           <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
@@ -62,8 +60,13 @@ function WritePost({ onSubmit }) {
               placeholder="Write your story here..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              onInput={(e) => {
+                e.target.style.height = "auto";
+                e.target.style.height = e.target.scrollHeight + "px";
+              }}
               required
-              className="w-full h-full bg-transparent text-lg text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none resize-none"
+              rows={1}
+              className="w-full bg-transparent text-lg text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none resize-none overflow-hidden"
             />
           </div>
         </div>
