@@ -1,4 +1,3 @@
-// src/ChatWidget.js
 import React, { useState, useRef, useEffect } from "react";
 
 const ChatWidget = () => {
@@ -7,7 +6,7 @@ const ChatWidget = () => {
   const [history, setHistory] = useState([]);
   const chatEndRef = useRef(null);
 
-  // Auto-scroll to latest message
+  
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -16,7 +15,10 @@ const ChatWidget = () => {
   const handleOpen = () => {
     setOpen(true);
     setHistory([
-      { sender: "ai", text: "Hello! I’m your AI assistant. How can I help you today?" }
+      {
+        sender: "ai",
+        text: "Hello! I’m your AI assistant. How can I help you today?",
+      },
     ]);
   };
 
@@ -28,7 +30,7 @@ const ChatWidget = () => {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-    setHistory(prev => [...prev, { sender: "user", text: input }]);
+    setHistory((prev) => [...prev, { sender: "user", text: input }]);
     const userMessage = input;
     setInput("");
 
@@ -39,10 +41,13 @@ const ChatWidget = () => {
         body: JSON.stringify({ text: userMessage }),
       });
       const data = await res.json();
-      setHistory(prev => [...prev, { sender: "ai", text: data.answer }]);
+      setHistory((prev) => [...prev, { sender: "ai", text: data.answer }]);
     } catch (err) {
       console.error(err);
-      setHistory(prev => [...prev, { sender: "ai", text: "Error: AI unavailable." }]);
+      setHistory((prev) => [
+        ...prev,
+        { sender: "ai", text: "Error: AI unavailable." },
+      ]);
     }
   };
 
@@ -73,7 +78,7 @@ const ChatWidget = () => {
             width: 70,
             height: 70,
             borderRadius: "50%",
-            backgroundColor: "#007bff", // bright blue same as chat
+            backgroundColor: "",
             color: "white",
             display: "flex",
             justifyContent: "center",
@@ -84,8 +89,7 @@ const ChatWidget = () => {
             zIndex: 1000,
             animation: "pulse 1.5s infinite",
           }}
-          onClick={handleOpen}
-        >
+          onClick={handleOpen}>
           🤖
         </div>
       )}
@@ -99,29 +103,34 @@ const ChatWidget = () => {
             right: 20,
             width: 360,
             height: 500,
-            borderRadius: 10,
-            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-            backgroundColor: "#fff",
+            borderRadius: 15,
+            boxShadow: "0 4px 30px rgba(0,0,0,0.2)",
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-          }}
-        >
+
+            
+            backgroundColor: "rgba(255, 255, 255, 0.1)", 
+            backdropFilter: "blur(16px)", 
+            WebkitBackdropFilter: "blur(16px)",
+            border: "1px solid rgba(255, 255, 255, 0.18)", 
+          }}>
           {/* Header */}
           <div
             style={{
-              backgroundColor: "#007bff",
+              backgroundColor: "rgba(0, 123, 255, 0.65)", 
               color: "white",
               padding: "10px 15px",
               fontWeight: "bold",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-            }}
-          >
+            }}>
             AI Assistant
-            <span style={{ cursor: "pointer", fontWeight: "bold" }} onClick={handleClose}>
+            <span
+              style={{ cursor: "pointer", fontWeight: "bold" }}
+              onClick={handleClose}>
               ✖
             </span>
           </div>
@@ -132,26 +141,27 @@ const ChatWidget = () => {
               flexGrow: 1,
               padding: 15,
               overflowY: "auto",
-              backgroundColor: "#f9f9f9",
+              backgroundColor: "transparent",
               display: "flex",
               flexDirection: "column",
-            }}
-          >
+            }}>
             {history.map((chat, index) => (
               <div
                 key={index}
                 style={{
                   alignSelf: chat.sender === "user" ? "flex-end" : "flex-start",
-                  backgroundColor: chat.sender === "user" ? "#007bff" : "#e5e5ea",
+                  backgroundColor:
+                    chat.sender === "user" ? "#007bff" : "#e5e5ea",
                   color: chat.sender === "user" ? "white" : "#333",
                   padding: "10px 14px",
-                  borderRadius: chat.sender === "user"
-                    ? "20px 20px 0px 20px"
-                    : "20px 20px 20px 0px",
+                  borderRadius:
+                    chat.sender === "user"
+                      ? "20px 20px 0px 20px"
+                      : "20px 20px 20px 0px",
                   maxWidth: "70%",
                   margin: "5px 0",
-                }}
-              >
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                }}>
                 {chat.text}
               </div>
             ))}
@@ -159,7 +169,12 @@ const ChatWidget = () => {
           </div>
 
           {/* Input */}
-          <div style={{ display: "flex", padding: 10, borderTop: "1px solid #ccc" }}>
+          <div
+            style={{
+              display: "flex",
+              padding: 10,
+              borderTop: "1px solid rgba(255, 255, 255, 0.18)",
+            }}>
             <input
               type="text"
               value={input}
@@ -168,9 +183,11 @@ const ChatWidget = () => {
               placeholder="Type your message..."
               style={{
                 flexGrow: 1,
+                color: "black",
                 padding: "10px 12px",
                 borderRadius: 20,
-                border: "1px solid #ccc",
+                border: "1px solid rgba(255, 255, 255, 0.3)", 
+                backgroundColor: "rgba(255, 255, 255, 0.25)", 
                 marginRight: 10,
                 fontSize: 14,
               }}
@@ -185,8 +202,7 @@ const ChatWidget = () => {
                 color: "white",
                 cursor: "pointer",
                 fontSize: 14,
-              }}
-            >
+              }}>
               Send
             </button>
           </div>

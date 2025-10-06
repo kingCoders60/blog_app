@@ -4,7 +4,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-fastapi": "cd Soham_ML && uvicorn fastapi_app:app --reload",
+    "dev": "concurrently \"npm run start\" \"npm run start-fastapi\""
+    
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.13.23",
@@ -14,5 +17,8 @@
     "helmet": "^7.0.0",
     "mongoose": "^7.5.0",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
