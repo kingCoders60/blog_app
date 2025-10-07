@@ -10,7 +10,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "./ui/resizable-navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   SignedIn,
@@ -20,6 +20,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import DarkModeToggle from "./DarkModeToggle";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 export function NavbarDemo() {
   const navItems = [
@@ -28,6 +29,7 @@ export function NavbarDemo() {
     { name: "Profile", link: "/profile" },
   ];
 
+  const { isDarkMode } = useDarkMode();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (

@@ -24,6 +24,16 @@ export const DarkModeProvider = ({ children }) => {
     return false;
   });
 
+  // Apply dark mode class immediately on mount
+  useEffect(() => {
+    // Initialize dark mode class based on the initial state
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   useEffect(() => {
     // Apply dark mode class to document
     if (isDarkMode) {
