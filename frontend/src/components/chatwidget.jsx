@@ -90,7 +90,15 @@ const ChatWidget = () => {
             animation: "pulse 1.5s infinite",
           }}
           onClick={handleOpen}>
-          🤖
+          <img
+            src="/image.png"
+            alt="Chatbot"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
         </div>
       )}
 
@@ -110,16 +118,15 @@ const ChatWidget = () => {
             overflow: "hidden",
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
 
-            
-            backgroundColor: "rgba(255, 255, 255, 0.1)", 
-            backdropFilter: "blur(16px)", 
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            border: "1px solid rgba(255, 255, 255, 0.18)", 
+            border: "1px solid rgba(255, 255, 255, 0.18)",
           }}>
           {/* Header */}
           <div
             style={{
-              backgroundColor: "rgba(0, 123, 255, 0.65)", 
+              backgroundColor: "rgba(0, 123, 255, 0.65)",
               color: "white",
               padding: "10px 15px",
               fontWeight: "bold",
@@ -186,8 +193,8 @@ const ChatWidget = () => {
                 color: "black",
                 padding: "10px 12px",
                 borderRadius: 20,
-                border: "1px solid rgba(255, 255, 255, 0.3)", 
-                backgroundColor: "rgba(255, 255, 255, 0.25)", 
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                backgroundColor: "rgba(255, 255, 255, 0.25)",
                 marginRight: 10,
                 fontSize: 14,
               }}
