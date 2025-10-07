@@ -10,33 +10,33 @@ import {
 const items = [
   {
     id: "1",
-    title: "What makes MVPBlocks different?",
+    title: "What makes our Blogs different?",
     content:
-      "MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS, designed to help you launch your MVPs in record time. No bloated packages, no unnecessary installs—just clean, copyable code to plug right into your next big thing.",
+      "Blogs is a fully open-source, developer-first library built using React.js and TailwindCSS, designed to help you launch your Blogs in record time.",
   },
   {
     id: "2",
-    title: "How can I customize the components?",
+    title: "What is Blogs and how does it work?",
     content:
-      "All components are built with Tailwind CSS, making them highly customizable. Simply modify the class names or use our theme variables to match your brand. Components also support both light and dark modes out of the box.",
+      "Blogs is a modern publishing platform where writers can share their ideas, tutorials, and stories with a global audience. Readers can follow their favorite authors, leave comments, and engage with content across multiple topics.",
   },
   {
     id: "3",
-    title: "Are MVPBlocks components responsive?",
+    title: "Do I need coding knowledge to write on Blogs?",
     content:
-      "Absolutely! All components are designed to be fully responsive and work beautifully on all devices, from mobile phones to large desktop screens. We've carefully crafted each component to provide an optimal experience regardless of screen size.",
+      "Not at all! Our editor is beginner-friendly and works like any standard text editor. You can easily format your content, add images, code snippets, or embeds without writing any code.",
   },
   {
     id: "4",
-    title: "Can I use MVPBlocks for commercial projects?",
+    title: "Can I earn money from my articles on Blogs?",
     content:
-      "Yes, all MVPBlocks components are free to use for both personal and commercial projects. No attribution required—just build and launch your MVP faster than ever before.",
+      "Yes, once you join our Partner Program, you can monetize your posts through readership engagement and sponsorships. We’ll provide analytics to help you track your performance and earnings.",
   },
   {
     id: "5",
-    title: "How do I get started with MVPBlocks?",
+    title: "How can I build my audience on Blogs?",
     content:
-      "Simply browse our component library, find the components you need, and copy the code into your project. It's that easy! Our documentation provides clear instructions for installation and usage.",
+      "Engage consistently by writing valuable posts, replying to comments, and tagging your articles appropriately. Readers can follow you, and your posts may be featured in trending topics for more visibility.",
   },
 ];
 const fadeInAnimationVariants = {
@@ -64,7 +64,7 @@ export default function Faq1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             Frequently Asked{" "}
-            <span className="from-primary bg-gradient-to-r to-rose-400 bg-clip-text text-transparent">
+            <span className="from-primary bg-red-600 bg-clip-text text-transparent">
               Questions
             </span>
           </motion.h2>

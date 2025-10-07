@@ -56,7 +56,7 @@ export default function WaitlistPage() {
             alt="logo"
             className="spin h-6 w-6"
           />
-          <span className="text-sm font-medium">Mvpblocks</span>
+          <span className="text-sm font-medium">Blogs</span>
           <motion.div
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
@@ -83,8 +83,8 @@ export default function WaitlistPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="text-muted-foreground mt-2 mb-12 sm:text-lg">
-          Be the first to access our revolutionary component library.
-          <br className="hidden sm:block" /> Build your MVP faster than ever
+          Be the first to access our revolutionary blog library.
+          <br className="hidden sm:block" /> Write your blogs faster than ever
           before.
         </motion.p>
 
@@ -100,7 +100,7 @@ export default function WaitlistPage() {
             )}>
             <Code className="text-primary mb-2 h-5 w-5" />
             <span className="text-xl font-bold">100+</span>
-            <span className="text-muted-foreground text-xs">Components</span>
+            <span className="text-muted-foreground text-xs">blogs</span>
           </div>
 
           <div
@@ -110,7 +110,7 @@ export default function WaitlistPage() {
             )}>
             <ExternalLink className="text-primary mb-2 h-5 w-5" />
             <span className="text-xl font-bold">Open Source</span>
-            <span className="text-muted-foreground text-xs">BSD 3-Clause</span>
+            <span className="text-muted-foreground text-xs">Large data</span>
           </div>
 
           <div
