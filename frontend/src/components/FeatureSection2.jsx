@@ -13,48 +13,48 @@ import {
 export function FeatureSection2() {
   const features = [
     {
-      title: "Built for developers",
+      title: "Post Summarization",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+        "Auto generate TL:DR's for long posts to boost readability and engagement",
       icon: <IconTerminal2 />,
     },
     {
-      title: "Ease of use",
+      title: "Smart Tagging",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+        "Extracts keywords/topics from content for better search and feed filtering",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Pricing like no other",
+      title: "Region Aware Feed",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+        "Prioritizes posts based on user location or region for personalized discovery",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
+      title: "Sentiment Analysis",
+      description: "Detects emotional tone for moderation or badges",
       icon: <IconCloud />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
+      title: "Badge Engine (AI-driven)",
+      description: "Awards badges based on writing styles, originality, or helpfulness",
       icon: <IconRouteAltLeft />,
     },
     {
-      title: "24/7 Customer Support",
+      title: "Semantic Search",
       description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+        "Uses embeddings for smarte, context-aware post retrival",
       icon: <IconHelp />,
     },
     {
-      title: "Money back guarantee",
+      title: "AI comment Assistant",
       description:
-        "If you donot like EveryAI, we will convince you to like us.",
+        "Suggests replies or comments to encourage interaction and accessibility",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Author Style Profiling",
+      description: "Analyzes writing style over time to display personality badges",
       icon: <IconHeart />,
     },
   ];
