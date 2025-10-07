@@ -6,6 +6,18 @@ Running Frontend: npm run dev
 
 Running Backend: npm run dev
 
+Overiew:
+
+<img width="1911" height="1085" alt="image" src="https://github.com/user-attachments/assets/87dcfe41-56cd-461f-a755-00ac61062a55" />
+
+<img width="1925" height="1085" alt="image" src="https://github.com/user-attachments/assets/52161e1f-90fe-407a-a8ca-16b3dae39d6a" />
+
+<img width="1925" height="1085" alt="image" src="https://github.com/user-attachments/assets/e5c4ac0e-5195-49a8-a81b-ff989b0f16e2" />
+
+<img width="1921" height="1083" alt="image" src="https://github.com/user-attachments/assets/adf086ae-4aa9-44be-bae0-774ad93a7468" />
+
+
+
 
 https://docs.google.com/document/d/13cDbENSxKmd2TAd2vwDIMy-Vy42TQV4wGGkwWpOVGiY/edit?tab=t.0
 A Full Stack Blog App with Ai Features..
