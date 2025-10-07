@@ -84,8 +84,8 @@ function Posts() {
         {userId ? (
           <WritePost onSubmit={handlePostSubmit} />
         ) : (
-          <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md backdrop-saturate-150 border border-gray-300 dark:border-gray-700 rounded-xl p-6 shadow-md flex flex-col items-center justify-center gap-4 animate-pulse">
-            <Lock className="w-8 h-8 text-gray-500 dark:text-gray-400" />
+          <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md backdrop-saturate-150 border border-gray-300 dark:border-gray-700 rounded-xl p-6 shadow-md flex flex-col items-center justify-center gap-4 ">
+            <Lock className="w-8 h-8 text-gray-500 dark:text-gray-400 animate-pulse" />
             <p className="text-gray-500 dark:text-gray-400 text-center">
               Sign in to write a post
             </p>
