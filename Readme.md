@@ -7,10 +7,12 @@ Our app is fully Docarized!!
 3) Open the root terminal of the folder and hit :
   
 5)   docker compose up --build
-6)   
-Run Both ..each in diffrent terminal to see in Actions!
+
 
 Or..
+
+
+Run Both ..each in diffrent terminal to see in Actions!
 
 manually ..
 
