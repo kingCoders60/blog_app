@@ -1,6 +1,17 @@
 MERN Stack Blog App
 ---
+Our app is fully Docarized!!
+
+1) Install docker destktop on Ur System..
+
+3) Open the root terminal of the folder and hit :
+  
+5)   docker compose up --build
 Run Both ..each in diffrent terminal to see in Actions!
+
+Or..
+
+manually ..
 
 Running Frontend: npm run dev
 
