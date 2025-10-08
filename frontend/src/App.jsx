@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
-import Navbar2 from "./components/Navbar2";
+import Navbar2 from "./components/Navbar2.jsx";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Posts from "./pages/Posts"; 
