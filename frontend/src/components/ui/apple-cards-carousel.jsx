@@ -26,35 +26,100 @@ export const Carousel = ({
   initialScroll = 0
 }) => {
   const carouselRef = React.useRef(null);
+  const animationRef = React.useRef(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState('right');
+  const [isPaused, setIsPaused] = useState(false);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const [autoScrollSpeed, setAutoScrollSpeed] = useState(0.5); // pixels per frame
 
   useEffect(() => {
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = initialScroll;
       checkScrollability();
     }
+    
+    // Start the animation
+    startAutoScroll();
+    
+    return () => {
+      // Clean up animation frame on unmount
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
   }, [initialScroll]);
 
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+      const isAtLeft = scrollLeft <= 0;
+      const isAtRight = scrollLeft >= scrollWidth - clientWidth - 1; // Adding small buffer for precision issues
+      
+      setCanScrollLeft(!isAtLeft);
+      setCanScrollRight(!isAtRight);
+      
+      // Change direction when reaching edges
+      if (isAtRight && direction === 'right') {
+        setDirection('left');
+      } else if (isAtLeft && direction === 'left') {
+        setDirection('right');
+      }
     }
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
+      setIsUserInteracting(true);
+      pauseAutoScroll();
       carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      setTimeout(() => {
+        setIsUserInteracting(false);
+        resumeAutoScroll();
+      }, 1000);
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
+      setIsUserInteracting(true);
+      pauseAutoScroll();
       carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      setTimeout(() => {
+        setIsUserInteracting(false);
+        resumeAutoScroll();
+      }, 1000);
     }
+  };
+  
+  const startAutoScroll = () => {
+    if (isPaused || isUserInteracting) return;
+    
+    const autoScroll = () => {
+      if (carouselRef.current && !isPaused && !isUserInteracting) {
+        // Calculate scroll amount based on direction
+        const scrollAmount = direction === 'right' ? autoScrollSpeed : -autoScrollSpeed;
+        carouselRef.current.scrollLeft += scrollAmount;
+        checkScrollability();
+      }
+      animationRef.current = requestAnimationFrame(autoScroll);
+    };
+    
+    animationRef.current = requestAnimationFrame(autoScroll);
+  };
+  
+  const pauseAutoScroll = () => {
+    setIsPaused(true);
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
+  
+  const resumeAutoScroll = () => {
+    setIsPaused(false);
+    startAutoScroll();
   };
 
   const handleCardClose = (index) => {
@@ -80,7 +145,14 @@ export const Carousel = ({
         <div
           className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
           ref={carouselRef}
-          onScroll={checkScrollability}>
+          onScroll={checkScrollability}
+          onMouseEnter={pauseAutoScroll}
+          onMouseLeave={resumeAutoScroll}
+          onTouchStart={() => setIsUserInteracting(true)}
+          onTouchEnd={() => {
+            setIsUserInteracting(false);
+            setTimeout(resumeAutoScroll, 1000);
+          }}>
           <div
             className={cn("absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l")}></div>
 
@@ -140,6 +212,25 @@ export const Card = ({
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
+  // Get parent carousel context - for auto-scroll control
+  // We need to use this approach since the Card is a child component of Carousel
+  const [parentCarousel, setParentCarousel] = useState(null);
+  
+  useEffect(() => {
+    // Find the parent carousel element to control auto-scrolling
+    if (!parentCarousel) {
+      const findCarousel = (element) => {
+        if (!element) return null;
+        if (element.hasAttribute && element.hasAttribute('data-carousel')) {
+          return element;
+        }
+        return findCarousel(element.parentElement);
+      };
+      
+      const carouselElement = findCarousel(containerRef.current);
+      setParentCarousel(carouselElement);
+    }
+  }, []);
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -150,8 +241,16 @@ export const Card = ({
 
     if (open) {
       document.body.style.overflow = "hidden";
+      // Pause parent carousel auto-scroll when card is open
+      if (window.__pauseCarouselAutoScroll) {
+        window.__pauseCarouselAutoScroll();
+      }
     } else {
       document.body.style.overflow = "auto";
+      // Resume parent carousel auto-scroll when card is closed
+      if (window.__resumeCarouselAutoScroll) {
+        window.__resumeCarouselAutoScroll();
+      }
     }
 
     window.addEventListener("keydown", onKeyDown);
@@ -169,8 +268,8 @@ export const Card = ({
     onCardClose(index);
   };
 
-  const { isDarkMode } = useDarkMode();
-
+  // Using isDarkMode from context
+  
   return (
     <>
       <AnimatePresence>
