@@ -108,7 +108,11 @@ For more detailed documentation and specifications, please refer to our [project
 - Node.js with Express
 - MongoDB for database
 - RESTful API architecture
-- JWT for authentication
+- Clerk for authentication
+
+### DevOps
+
+-Docker
 
 ## Contributing
 
