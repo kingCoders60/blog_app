@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../config/api.js";
 
 const CreatePost = () => {
   const { getToken, userId } = useAuth();
@@ -27,7 +28,7 @@ const CreatePost = () => {
     try {
       const token = await getToken();
 
-      await axios.post("http://localhost:5001/api/posts", formData, {
+      await axios.post(API.url(API.endpoints.posts), formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth, useUser, SignedIn } from "@clerk/clerk-react";
+import API from "../config/api.js";
 
 function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
@@ -8,9 +9,10 @@ function CommentSection({ postId }) {
   const { user } = useUser();
 
   useEffect(() => {
-    fetch(`http://localhost:5001/api/comments?postId=${postId}`)
+    fetch(`${API.url(API.endpoints.comments)}?postId=${postId}`)
       .then((res) => res.json())
-      .then((data) => setComments(data.comments || []));
+      .then((data) => setComments(data.comments || []))
+      .catch(error => console.error("Error fetching comments:", error));
   }, [postId]);
 
   const handleSubmit = async (e) => {
@@ -18,7 +20,7 @@ function CommentSection({ postId }) {
     const token = await getToken();
     if (!token) return alert("Please sign in to comment.");
 
-    const res = await fetch("http://localhost:5001/api/comments", {
+    const res = await fetch(API.url(API.endpoints.comments), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +36,7 @@ function CommentSection({ postId }) {
 
   const handleDelete = async (commentId) => {
     const token = await getToken();
-    await fetch(`http://localhost:5001/api/comments/${commentId}`, {
+    await fetch(`${API.url(API.endpoints.comments)}/${commentId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

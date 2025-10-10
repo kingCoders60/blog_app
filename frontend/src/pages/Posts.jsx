@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import API from "../config/api.js";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -21,7 +22,7 @@ function Posts() {
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/posts")
+    fetch(API.url(API.endpoints.posts))
       .then((res) => res.json())
       .then((data) => setPosts(data.posts || []))
       .catch((err) => console.error("Error fetching posts:", err));
@@ -32,7 +33,7 @@ function Posts() {
       const token = await getToken();
       if (!token) throw new Error("User is not authenticated.");
 
-      const response = await fetch("http://localhost:5001/api/posts", {
+      const response = await fetch(API.url(API.endpoints.posts), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

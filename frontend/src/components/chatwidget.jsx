@@ -1,4 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Send, Mic, StopCircle, X, Maximize2, Minimize2 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { FaUserAstronaut, FaRobot } from "react-icons/fa";
+import API from "../config/api.js";
 
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
@@ -35,7 +39,7 @@ const ChatWidget = () => {
     setInput("");
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/ask", {
+      const res = await fetch(API.chatUrl(API.endpoints.chat.ask), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: userMessage }),

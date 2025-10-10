@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReadWrite } from "../components/ReadWrite";
 import { useDarkMode } from "../contexts/DarkModeContext";
 import { useUser } from "@clerk/clerk-react";
+import API from "../config/api.js";
 
 function Profile() {
   const { isDarkMode } = useDarkMode();
@@ -10,12 +11,13 @@ function Profile() {
 
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:5001/api/posts")
+      fetch(API.url(API.endpoints.posts))
         .then((res) => res.json())
         .then((data) => {
           const filtered = data.posts.filter((post) => post.author === user.id);
           setUserPosts(filtered);
-        });
+        })
+        .catch(error => console.error("Error fetching user posts:", error));
     }
   }, [user]);
 
